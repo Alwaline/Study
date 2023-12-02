@@ -1,0 +1,53 @@
+import os
+import shutil
+
+
+def check_dir(path):
+    return os.path.exists(path)
+
+
+def see_dir(path):
+    for root, directories, files in os.walk(path):
+        print(root)
+        for directory in directories:
+            print(directory)
+        for file in files:
+            print(file)
+
+def make_dir(path_dir):
+    os.mkdir(path_dir)
+
+def del_dir_file(path):
+    os.rmdir(path)
+
+def copy_file(path_1, path_2):
+    shutil.copyfile(path_1, path_2)
+
+def move_file(path_1, path_2):
+    os.replace(path_1, path_2)
+
+def main():
+    # Содержимое текущей директории
+    see_dir(os.getcwd())
+
+    # Создание новой директории
+    make_dir(os.getcwd()+'\\test')
+
+    # удаление директории
+    del_dir_file(os.getcwd()+'\\test')
+    
+    # копирование файла
+    copy_file(os.getcwd()+'\\main.py', os.getcwd()+'\\main123.txt')
+
+    # переиещение файла
+    move_file(os.getcwd()+'\\main123.txt', os.getcwd()+'\\папка\\main123.txt')
+
+    # 
+
+    
+
+
+
+
+if __name__ == "__main__":
+    main()
